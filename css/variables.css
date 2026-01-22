@@ -1,0 +1,11 @@
+:root {
+  --primary: #f5c77a; /* golden glow */
+  --primary-glow: rgba(245, 199, 122, 0.6);
+  --dark: #0b1220;
+  --light-dark: #111827;
+  --card-bg: rgba(30, 41, 59, 0.75);
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --radius: 12px;
+  --transition: all 0.3s ease;
+}

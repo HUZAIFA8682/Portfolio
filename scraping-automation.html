@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Scraping & Outreach Automation System</title>
+
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container nav-content">
+    <h1 class="logo">Automation System</h1>
+    <nav>
+      <a href="index.html">← Back to Portfolio</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Project Overview</h2>
+    <p>
+      This project is an end-to-end data automation pipeline built to identify,
+      evaluate, and outreach to relevant companies at scale. It automates the
+      complete workflow — from raw company data ingestion to intelligent filtering
+      and controlled email outreach — while remaining resume-safe, fault-tolerant,
+      and production-ready.
+    </p>
+    <p>
+      The system is designed with real-world constraints in mind, including rate
+      limits, interruptions, unreliable websites, and data quality issues.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Problem It Solves</h2>
+    <p>
+      Manually finding company websites, checking relevance, shortlisting leads,
+      and sending outreach emails is slow, error-prone, and does not scale.
+    </p>
+    <p>
+      This system replaces manual work with a reliable automation pipeline capable
+      of processing thousands of companies with minimal human intervention.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">How the System Works</h2>
+
+    <h4>1️⃣ Data Ingestion</h4>
+    <p>
+      The pipeline starts with a raw CSV of company records (e.g., Companies House data).
+    </p>
+
+    <h4>2️⃣ Web Scraping Engine</h4>
+    <p>
+      Using Selenium, the system searches for official company websites, extracts
+      contact emails, mimics human browsing behavior with random delays, and avoids
+      reprocessing already scraped companies. The process is resume-safe and can be
+      stopped and restarted without losing progress.
+    </p>
+
+    <h4>3️⃣ Intelligent Filtering & Scoring</h4>
+    <p>
+      Each website is analyzed using a regex-based keyword scoring engine. Positive
+      keywords increase relevance, negative keywords discard irrelevant companies,
+      and weighted rules determine final categorization.
+    </p>
+
+    <p>
+      Companies are automatically classified into:
+      <strong>Best Match, Good Match, Potential Match, or Discard</strong>,
+      with results exported into structured Excel reports.
+    </p>
+
+    <h4>4️⃣ Email Outreach Automation</h4>
+    <p>
+      A secure SMTP-based outreach system validates emails, enforces daily sending
+      limits, introduces random delays, prevents duplicate emails, and uses Gmail
+      App Password authentication for security.
+    </p>
+
+    <h4>5️⃣ API Layer (Optional)</h4>
+    <p>
+      A FastAPI backend allows CSV uploads, background scraping job execution, and
+      result downloads, enabling easy integration with dashboards or frontends.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Key Technical Features</h2>
+    <ul>
+      <li>Resume-safe execution with automatic progress backups</li>
+      <li>Fault-tolerant design handling missing sites and failures</li>
+      <li>Regex-driven keyword decision engine</li>
+      <li>Human-like scraping behavior</li>
+      <li>CSV-first, transparent data pipeline</li>
+      <li>Modular architecture (scraper → filter → outreach)</li>
+      <li>Production-aware constraints and validations</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Tech Stack</h2>
+    <p>
+      Python · Selenium · Pandas · FastAPI · SMTP (Gmail App Passwords) ·
+      Regex-based NLP · Excel Automation (openpyxl)
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Why This Project Stands Out</h2>
+    <p>
+      This is not a demo scraper. It reflects real-world automation challenges,
+      data integrity concerns, scalability considerations, and safe email outreach
+      practices. The project demonstrates backend engineering, automation design,
+      and system-level thinking.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">What This Project Shows About Me</h2>
+    <ul>
+      <li>Strong backend fundamentals</li>
+      <li>Ability to design end-to-end systems</li>
+      <li>Experience with automation under real constraints</li>
+      <li>Clean, maintainable, production-oriented code</li>
+      <li>Practical, problem-solving mindset</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>© 2026 Muhammad Huzaifa</p>
+</footer>
+
+</body>
+</html>

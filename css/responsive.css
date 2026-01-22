@@ -1,0 +1,13 @@
+@media (max-width: 768px) {
+  .project-cover-img {
+    height: 300px;
+  }
+
+  .project-cover-overlay {
+    padding: 24px;
+  }
+
+  .project-cover-overlay h3 {
+    font-size: 1.6rem;
+  }
+}
