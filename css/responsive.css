@@ -1,13 +1,30 @@
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    text-align: center;
+  }
+
+  .hero-image img {
+    margin: 0 auto;
+    max-width: 360px;
+  }
+
+  .hero-text p {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-text h1 {
+    font-size: 2.4rem;
+  }
+
   .project-cover-img {
     height: 300px;
   }
 
   .project-cover-overlay {
     padding: 24px;
-  }
-
-  .project-cover-overlay h3 {
-    font-size: 1.6rem;
   }
 }

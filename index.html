@@ -10,31 +10,362 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    /* --- POLISHED BUTTON STYLES (Global for Index) --- */
+
+    /* Premium Glow Button (Replaces basic btn-primary) */
+    .btn-glow {
+      position: relative;
+      background: linear-gradient(135deg, var(--primary), #e6b765); /* Gradient from variables */
+      color: #0b1220; /* Dark text for contrast */
+      padding: 14px 28px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 15px var(--primary-glow);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      overflow: hidden;
+      margin-top: 24px;
+    }
+
+    /* Shimmer Effect Animation */
+    .btn-glow::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: 0.5s;
+    }
+
+    .btn-glow:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 30px var(--primary-glow);
+      color: #000;
+    }
+
+    .btn-glow:hover::before {
+      left: 100%;
+    }
+
+    /* Navbar Link Polish */
+    .navbar nav a {
+      position: relative;
+      color: var(--text);
+      font-weight: 500;
+      padding: 8px 16px;
+      transition: color 0.3s ease;
+    }
+    
+    .navbar nav a:hover {
+      color: var(--primary);
+    }
+
+    /* --- NEW UI POLISH FOR SECTIONS --- */
+
+    /* Metric Cards Polish */
+    .metric-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .metric-number {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff, var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .metric-label {
+      color: var(--muted);
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    /* Service/Skill Cards Polish */
+    .service-card {
+      background: linear-gradient(180deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.9));
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 25px;
+      border-radius: 16px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .service-card:hover {
+      background: rgba(30, 41, 59, 0.9);
+      transform: translateX(5px);
+      border-color: var(--primary);
+      box-shadow: 0 0 20px rgba(245, 199, 122, 0.1);
+    }
+
+    .service-icon {
+      font-size: 1.5rem;
+      color: var(--primary);
+      background: rgba(245, 199, 122, 0.1);
+      width: 45px;
+      height: 45px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .service-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    /* Experience Card Polish (Timeline Style) */
+    .experience-card {
+      background: rgba(15, 23, 42, 0.6);
+      border-left: 4px solid var(--primary); /* Gold Accent */
+      border-radius: 0 16px 16px 0;
+      padding: 30px;
+      margin-bottom: 24px;
+      margin-top: 50px; /* Added gap between heading and card */
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .experience-card:hover {
+      transform: translateX(8px);
+      background: rgba(30, 41, 59, 0.8);
+    }
+
+    .experience-card h3 {
+      color: #fff;
+      font-size: 1.4rem;
+      margin-bottom: 5px;
+    }
+
+    /* Tech Stack Card Polish */
+    .tech-card {
+      background: rgba(30, 41, 59, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 30px 24px;
+      text-align: center;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tech-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 0 20px rgba(245, 199, 122, 0.15);
+      transform: translateY(-5px);
+    }
+
+    .tech-card h4 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+    
+    .tech-names {
+      font-size: 0.85rem; 
+      color: var(--muted); 
+      margin-top: 15px;
+      font-weight: 500;
+    }
+
+    /* Project Card Polish */
+    .project-cover-card {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .project-cover-card:hover {
+      box-shadow: 0 0 30px rgba(245, 199, 122, 0.15); /* Gold glow */
+      border-color: var(--primary-glow);
+    }
+
+    /* Availability/Contact Banner Polish */
+    .availability-card {
+      background: radial-gradient(circle at top right, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 1));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 60px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .availability-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(245, 199, 122, 0.05) 0%, transparent 60%);
+      animation: rotate-bg 20s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes rotate-bg {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .contact-details {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-item:hover {
+      color: var(--primary);
+    }
+
+    /* Footer Polish */
+    .footer-polished {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(11, 18, 32, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 40px 0;
+      margin-top: 40px;
+    }
+
+    /* About Card Polish */
+    .about-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      padding: 40px 30px;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .about-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border-color: var(--primary);
+    }
+
+    /* Decorative Quote */
+    .about-card::before {
+      content: '“';
+      position: absolute;
+      top: -15px;
+      left: 20px;
+      font-size: 8rem;
+      line-height: 1;
+      color: rgba(245, 199, 122, 0.1);
+      font-family: serif;
+      pointer-events: none;
+    }
+
+    .about-text {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: var(--text);
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .about-highlight {
+      color: var(--primary);
+      font-weight: 600;
+      position: relative;
+    }
+  </style>
 </head>
 <body>
 
+<!-- ================= NAVBAR ================= -->
 <header class="navbar">
   <div class="container nav-content">
     <h1 class="logo">Huzaifa</h1>
     <nav>
       <a href="#about">About</a>
-      <a href="#services">What I Do</a>
+      <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
 </header>
 
-<section class="hero">
+<!-- ================= HERO ================= -->
+<section class="hero section show">
   <div class="container hero-grid">
     <div class="hero-text">
       <h2>Hello, I’m</h2>
       <h1>Muhammad Huzaifa</h1>
       <p>
-        Backend Developer building AI-powered systems,
-        scalable APIs, and intelligent automation.
+        Backend Developer specializing in AI-powered systems,
+        scalable APIs, automation, and production-ready backends.
       </p>
-      <a href="#projects" class="btn-primary">View Projects</a>
+      <!-- Polished Button -->
+      <a href="#projects" class="btn-glow">
+        View Projects <span style="font-size: 1.2em">↓</span>
+      </a>
     </div>
 
     <div class="hero-image">
@@ -43,77 +374,221 @@
   </div>
 </section>
 
+<!-- ================= ABOUT ================= -->
 <section id="about" class="section">
   <div class="container">
     <h2 class="section-title">About Me</h2>
-    <p>
-      I’m a results-driven <strong>Backend Developer</strong> with expertise in
-      <strong>Artificial Intelligence, Machine Learning, and Large Language Models (LLMs)</strong>.
-      I build scalable, production-ready systems including AI-powered APIs,
-      automation, web scraping, and database-driven platforms.
-    </p>
-  </div>
-</section>
-
-<section id="services" class="section">
-  <div class="container">
-    <h2 class="section-title">What I Do</h2>
-
-    <div class="card-grid">
-      <div class="card"><h3>Backend Development</h3></div>
-      <div class="card"><h3>AI & LLM Systems</h3></div>
-      <div class="card"><h3>Web Scraping</h3></div>
-      <div class="card"><h3>Software Development</h3></div>
-      <div class="card"><h3>Database Management</h3></div>
+    <!-- Polished About Card -->
+    <div class="about-card">
+      <p class="about-text">
+        I’m a results-driven <span class="about-highlight">Backend Developer</span> with expertise in
+        <span class="about-highlight">Artificial Intelligence, Machine Learning, and Large Language Models (LLMs)</span>.
+        I build scalable, fault-tolerant systems including AI-powered APIs,
+        automation pipelines, web scraping systems, and database-driven platforms.
+      </p>
     </div>
   </div>
 </section>
 
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience" class="section">
+  <div class="container">
+    <h2 class="section-title">Experience</h2>
+
+    <!-- Polished Experience Card -->
+    <div class="experience-card">
+      <h3>Backend Developer — Independent / Freelance</h3>
+      <p class="subtitle" style="color: var(--muted); margin-bottom: 15px;">2024 – Present</p>
+      <ul style="padding-left: 20px; line-height: 1.7;">
+        <li>Designed and built scalable backend systems using FastAPI & PostgreSQL</li>
+        <li>Developed AI-powered platforms using LLMs for automation and content generation</li>
+        <li>Built resume-safe web scraping and outreach automation systems</li>
+        <li>Focused on clean architecture, fault tolerance, and production readiness</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= METRICS ================= -->
+<section id="metrics" class="section">
+  <div class="container">
+    <h2 class="section-title">Impact & Metrics</h2>
+
+    <!-- Polished Metric Grid with Added Spacing -->
+    <div class="card-grid" style="margin-top: 80px;">
+      <div class="metric-card">
+        <span class="metric-number">10k+</span>
+        <p class="metric-label">Companies Processed</p>
+      </div>
+      <div class="metric-card">
+        <span class="metric-number">500+</span>
+        <p class="metric-label">AI Episodes Generated</p>
+      </div>
+      <div class="metric-card">
+        <span class="metric-number">90%</span>
+        <p class="metric-label">Workload Reduction</p>
+      </div>
+      <div class="metric-card">
+        <span class="metric-number">100%</span>
+        <p class="metric-label">Fault Tolerance</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHAT I DO ================= -->
+<section id="services" class="section">
+  <div class="container">
+    <h2 class="section-title">What I Do</h2>
+
+    <!-- Polished Service Grid with Added Spacing -->
+    <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-top: 80px;">
+      <div class="service-card">
+        <div class="service-icon">⚙️</div>
+        <div class="service-title">Backend Architecture</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🤖</div>
+        <div class="service-title">AI & LLM Integration</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🕷️</div>
+        <div class="service-title">Web Scraping & Automation</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💻</div>
+        <div class="service-title">Software Development</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🗄️</div>
+        <div class="service-title">Database Design</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TECH STACK ================= -->
+<section id="tech-stack" class="section">
+  <div class="container">
+    <h2 class="section-title">Tech Stack</h2>
+
+    <!-- Added margin-top to pull cards down -->
+    <div class="tech-stack-grid" style="margin-top: 100px;">
+      <!-- Polished Tech Cards with Labels -->
+      <div class="tech-card">
+        <h4>Backend</h4>
+        <div class="project-tech-icons">
+          <img src="assets/icons/python.svg" alt="Python" title="Python">
+          <img src="assets/icons/fast-api.svg" alt="FastAPI" title="FastAPI">
+          <img src="assets/icons/jwt.svg" alt="JWT" title="JWT">
+        </div>
+        <p class="tech-names">Python · FastAPI · JWT</p>
+      </div>
+
+      <div class="tech-card">
+        <h4>AI / APIs</h4>
+        <div class="project-tech-icons">
+          <img src="assets/icons/openapi.svg" alt="OpenAPI" title="OpenAPI">
+        </div>
+        <p class="tech-names">OpenAPI · LLMs</p>
+      </div>
+
+      <div class="tech-card">
+        <h4>Database</h4>
+        <div class="project-tech-icons">
+          <img src="assets/icons/postgresql.svg" alt="PostgreSQL" title="PostgreSQL">
+        </div>
+        <p class="tech-names">PostgreSQL</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
 <section id="projects" class="section">
   <div class="container">
     <h2 class="section-title">Projects</h2>
 
     <!-- FOREVERBOOK -->
     <div class="project-cover-card">
-      <img
-        src="assets/images/foreverbook-cover.jpg"
-        alt="ForeverBook"
-        class="project-cover-img"
-      >
+      <img src="assets/images/foreverbook-cover.jpg" class="project-cover-img">
+
       <div class="project-cover-overlay">
         <h3>ForeverBook</h3>
         <p class="subtitle">AI-Driven Episodic Story Generation Platform</p>
-        <p class="stack">Backend · FastAPI · PostgreSQL · OpenAI · Async Tasks</p>
-        <a href="foreverbook.html" class="btn-primary">View Details</a>
+
+        <div class="project-tech-icons">
+          <img src="assets/icons/python.svg">
+          <img src="assets/icons/fast-api.svg">
+          <img src="assets/icons/postgresql.svg">
+          <img src="assets/icons/openapi.svg">
+          <img src="assets/icons/jwt.svg">
+        </div>
+
+        <!-- Polished Button -->
+        <a href="foreverbook.html" class="btn-glow" style="margin-top: 15px;">View Details</a>
       </div>
     </div>
 
     <!-- WEB SCRAPING -->
     <div class="project-cover-card">
-      <img
-        src="assets/images/background.jpg"
-        alt="Web Scraping & Outreach Automation"
-        class="project-cover-img"
-      >
+      <img src="assets/images/background.jpg" class="project-cover-img">
+
       <div class="project-cover-overlay">
         <h3>Web Scraping & Outreach Automation</h3>
-        <p class="subtitle">End-to-End Lead Intelligence & Outreach Pipeline</p>
-        <p class="stack">Python · Selenium · Pandas · FastAPI · SMTP · Regex</p>
-        <a href="scraping-automation.html" class="btn-primary">View Details</a>
+        <p class="subtitle">End-to-End Lead Intelligence Pipeline</p>
+
+        <div class="project-tech-icons">
+          <img src="assets/icons/python.svg">
+          <img src="assets/icons/fast-api.svg">
+          <img src="assets/icons/jwt.svg">
+        </div>
+
+        <!-- Polished Button -->
+        <a href="scraping-automation.html" class="btn-glow" style="margin-top: 15px;">View Details</a>
       </div>
     </div>
-
   </div>
 </section>
 
+<!-- ================= CTA ================= -->
+<section id="cta" class="section">
+  <div class="container">
+    <h2 class="section-title">Code & Resume</h2>
+    <div class="cta-buttons">
+      <!-- Polished Buttons -->
+      <a href="https://github.com/YOUR_GITHUB" target="_blank" class="btn-glow">GitHub <span style="font-size: 1.2em">↗</span></a>
+      <a href="Docs/Huzaifa Cv,s.pdf" class="btn-glow">Download Resume <span style="font-size: 1.2em">↓</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AVAILABILITY (Polished) ================= -->
 <section id="contact" class="section">
   <div class="container">
-    <h2 class="section-title">Contact</h2>
-    <p>Email: your.email@example.com</p>
+    <div class="availability-card">
+      <h2 class="section-title" style="margin-bottom: 10px; position: relative; z-index: 2;">Availability</h2>
+      <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto; position: relative; z-index: 2;">
+        Open to <strong style="color: var(--primary);">Backend Developer / AI Engineer</strong> roles.<br>
+        Remote · On-site · Freelance
+      </p>
+
+      <div class="contact-details">
+        <a href="tel:+923115893933" class="contact-item">
+          <span style="font-size: 1.3em">📞</span> +92 311 5893933
+        </a>
+        <a href="mailto:huziafa.malik45@gmail.com" class="contact-item">
+          <span style="font-size: 1.3em">📧</span> huziafa.malik45@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/muhammad-huzaifa-5b575233a" target="_blank" class="contact-item">
+          <span style="font-size: 1.3em">🔗</span> LinkedIn
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
-<footer class="footer">
+<footer class="footer footer-polished">
   <p>© 2026 Muhammad Huzaifa</p>
 </footer>
 
