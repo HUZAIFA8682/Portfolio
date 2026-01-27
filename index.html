@@ -69,8 +69,40 @@
       transition: color 0.3s ease;
     }
     
-    .navbar nav a:hover {
+    .navbar nav a:hover,
+    .navbar nav a.active { /* Active State Style */
       color: var(--primary);
+    }
+
+    .navbar nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 2px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    /* --- SCROLL PROGRESS BAR --- */
+    .scroll-progress-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: transparent;
+      z-index: 1001; /* Above navbar */
+    }
+
+    .scroll-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), #e6b765);
+      width: 0%;
+      box-shadow: 0 0 10px var(--primary-glow);
+      transition: width 0.1s ease-out;
     }
 
     /* --- NEW UI POLISH FOR SECTIONS --- */
@@ -580,25 +612,134 @@
       outline: none;
       border-color: var(--primary);
     }
+
+    /* --- NEW: Workflow & Canvas --- */
+    
+    /* Particles Canvas */
+    #hero-particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.6;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Workflow Timeline */
+    .workflow-steps {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      margin-top: 40px;
+      gap: 20px;
+    }
+
+    .workflow-steps::before {
+      content: '';
+      position: absolute;
+      top: 30px;
+      left: 20px;
+      right: 20px;
+      height: 2px;
+      background: rgba(255,255,255,0.1);
+      z-index: 0;
+    }
+
+    .workflow-step {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      flex: 1;
+    }
+
+    .step-icon {
+      width: 60px;
+      height: 60px;
+      background: #0f172a;
+      border: 2px solid var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px auto;
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    }
+
+    .workflow-step:hover .step-icon {
+      transform: scale(1.1);
+      background: var(--primary);
+      color: #000;
+    }
+
+    .step-title {
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: #fff;
+    }
+
+    .step-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    @media (max-width: 768px) {
+      .workflow-steps {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 20px;
+      }
+      .workflow-steps::before {
+        width: 2px;
+        height: 100%;
+        left: 49px; /* Align with icon center */
+        top: 0;
+        right: auto;
+      }
+      .workflow-step {
+        display: flex;
+        text-align: left;
+        align-items: center;
+        gap: 20px;
+      }
+      .step-icon {
+        margin: 0;
+        flex-shrink: 0;
+      }
+    }
   </style>
 </head>
 <body>
+
+<!-- Scroll Progress Bar -->
+<div class="scroll-progress-container">
+  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+</div>
 
 <!-- ================= NAVBAR ================= -->
 <header class="navbar">
   <div class="container nav-content">
     <h1 class="logo">Huzaifa</h1>
     <nav>
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#" id="openContactModal">Contact</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#" id="openContactModal" class="nav-link">Contact</a>
     </nav>
   </div>
 </header>
 
 <!-- ================= HERO ================= -->
 <section class="hero section show">
+  <canvas id="hero-particles"></canvas> <!-- PARTICLE CANVAS -->
   <div class="container hero-grid">
     <div class="hero-text">
       <h2>Hello, I’m</h2>
@@ -617,7 +758,8 @@
       </a>
     </div>
 
-    <div class="hero-image">
+    <!-- Added tilt-card class for consistency -->
+    <div class="hero-image card" style="background:transparent; padding:0; box-shadow:none;">
       <img src="assets/images/profile.png" alt="Profile">
     </div>
   </div>
@@ -709,7 +851,7 @@
   </div>
 </section>
 
-<!-- ================= TESTIMONIALS (NEW) ================= -->
+<!-- ================= TESTIMONIALS ================= -->
 <section id="testimonials" class="section">
   <div class="container">
     <h2 class="section-title">What Clients Say</h2>
@@ -781,6 +923,39 @@
       <div class="service-card">
         <div class="service-icon">🗄️</div>
         <div class="service-title">Database Design</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MY WORKFLOW (NEW) ================= -->
+<section id="workflow" class="section">
+  <div class="container">
+    <h2 class="section-title">My Development Process</h2>
+    <div class="workflow-steps">
+      <!-- Step 1 -->
+      <div class="workflow-step">
+        <div class="step-icon">🔍</div>
+        <h4 class="step-title">Discovery</h4>
+        <p class="step-desc">Understanding requirements & architecture planning.</p>
+      </div>
+      <!-- Step 2 -->
+      <div class="workflow-step">
+        <div class="step-icon">💻</div>
+        <h4 class="step-title">Build</h4>
+        <p class="step-desc">Writing clean, scalable, and efficient code.</p>
+      </div>
+      <!-- Step 3 -->
+      <div class="workflow-step">
+        <div class="step-icon">🛡️</div>
+        <h4 class="step-title">Test</h4>
+        <p class="step-desc">Rigorous testing for bugs & performance bottlenecks.</p>
+      </div>
+      <!-- Step 4 -->
+      <div class="workflow-step">
+        <div class="step-icon">🚀</div>
+        <h4 class="step-title">Deploy</h4>
+        <p class="step-desc">Seamless deployment & CI/CD integration.</p>
       </div>
     </div>
   </div>

@@ -49,7 +49,7 @@ function resetTilt(e) {
 }
 
 
-// 3. Typewriter Effect
+// 3. Typewriter Effect (Existing)
 const textElement = document.getElementById('typewriter-text');
 const phrases = ['Scalable APIs', 'AI Models', 'Automation Systems', 'Robust Backends'];
 let phraseIndex = 0;
@@ -90,7 +90,7 @@ function typeWriter() {
 document.addEventListener('DOMContentLoaded', typeWriter);
 
 
-// 4. Skill Bar Animation (Trigger on scroll)
+// 4. Skill Bar Animation (Trigger on scroll) (Existing)
 const skillBars = document.querySelectorAll('.skill-bar-fill');
 
 const skillObserver = new IntersectionObserver(entries => {
@@ -107,20 +107,140 @@ const skillObserver = new IntersectionObserver(entries => {
 skillBars.forEach(bar => skillObserver.observe(bar));
 
 
-// 5. Floating Action Button (Scroll to Top)
+// 5. Floating Action Button (Scroll to Top) (Existing)
 const scrollBtn = document.getElementById("scrollTopBtn");
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    scrollBtn.classList.add("visible");
-  } else {
-    scrollBtn.classList.remove("visible");
+if (scrollBtn) {
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      scrollBtn.classList.add("visible");
+    } else {
+      scrollBtn.classList.remove("visible");
+    }
+  });
+
+  scrollBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+}
+
+// 6. Particle Background Effect (Existing)
+const canvas = document.getElementById('hero-particles');
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let particlesArray;
+
+  // Handle Resize
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    initParticles();
+  });
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 2 + 1; // Size between 1 and 3
+      this.speedX = Math.random() * 1 - 0.5; // Random speed
+      this.speedY = Math.random() * 1 - 0.5;
+      this.color = 'rgba(245, 199, 122, 0.3)'; // Primary gold color with opacity
+    }
+
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+
+      // Wrap around edges
+      if (this.x > canvas.width) this.x = 0;
+      if (this.x < 0) this.x = canvas.width;
+      if (this.y > canvas.height) this.y = 0;
+      if (this.y < 0) this.y = canvas.height;
+    }
+
+    draw() {
+      ctx.fillStyle = this.color;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function initParticles() {
+    particlesArray = [];
+    // Adjust number of particles based on screen size
+    const numberOfParticles = (canvas.width * canvas.height) / 15000;
+    for (let i = 0; i < numberOfParticles; i++) {
+      particlesArray.push(new Particle());
+    }
+  }
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    for (let i = 0; i < particlesArray.length; i++) {
+      particlesArray[i].update();
+      particlesArray[i].draw();
+      
+      // Connect particles with lines if close enough
+      for (let j = i; j < particlesArray.length; j++) {
+        const dx = particlesArray[i].x - particlesArray[j].x;
+        const dy = particlesArray[i].y - particlesArray[j].y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if (distance < 100) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(245, 199, 122, ${0.1 - distance/1000})`; // Fade out line
+          ctx.lineWidth = 1;
+          ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+          ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(animateParticles);
+  }
+
+  initParticles();
+  animateParticles();
+}
+
+// 7. Scroll Progress Bar (NEW)
+window.addEventListener('scroll', () => {
+  const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (scrollTop / scrollHeight) * 100;
+  
+  const progressBar = document.getElementById('scrollProgressBar');
+  if (progressBar) {
+    progressBar.style.width = scrolled + "%";
   }
 });
 
-scrollBtn.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
+// 8. Active Nav Link Highlighter (NEW)
+const navSections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Remove active class from all links
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').substring(1) === entry.target.id) {
+          link.classList.add('active');
+        }
+      });
+    }
   });
+}, { threshold: 0.5 }); // Trigger when 50% of section is visible
+
+navSections.forEach(section => {
+  navObserver.observe(section);
 });
