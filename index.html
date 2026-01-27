@@ -75,6 +75,23 @@
 
     /* --- NEW UI POLISH FOR SECTIONS --- */
 
+    /* Custom Spacing Overrides */
+    .section {
+      padding: 60px 0; /* Reduced global section padding */
+    }
+    
+    #about {
+      padding-bottom: 20px; 
+    }
+    #experience {
+      padding-top: 20px; 
+    }
+
+    /* Add Gap Between Heading and Cards */
+    .section-title {
+      margin-bottom: 40px;
+    }
+
     /* Metric Cards Polish */
     .metric-card {
       background: rgba(15, 23, 42, 0.6);
@@ -167,7 +184,7 @@
       border-radius: 0 16px 16px 0;
       padding: 30px;
       margin-bottom: 24px;
-      margin-top: 50px; /* Added gap between heading and card */
+      margin-top: 0; 
       backdrop-filter: blur(10px);
       transition: transform 0.3s ease, background 0.3s ease;
     }
@@ -214,6 +231,20 @@
       color: var(--muted); 
       margin-top: 15px;
       font-weight: 500;
+    }
+
+    /* Icon SVG Styles */
+    .tech-icon-svg {
+      width: 42px;
+      height: 42px;
+      fill: var(--primary);
+      filter: drop-shadow(0 0 8px rgba(245, 199, 122, 0.3));
+      transition: transform 0.3s ease;
+    }
+    
+    .tech-card:hover .tech-icon-svg {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 12px rgba(245, 199, 122, 0.6));
     }
 
     /* Project Card Polish */
@@ -335,6 +366,220 @@
       font-weight: 600;
       position: relative;
     }
+
+    /* Education & Certs Grid */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .edu-column h3 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 10px;
+    }
+
+    .edu-item {
+      margin-bottom: 20px;
+      padding-left: 15px;
+      border-left: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .edu-item h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .edu-item p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .edu-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* --- NEW ANIMATIONS: Typewriter & Skill Bars --- */
+
+    /* Typewriter Styles */
+    .typewriter-container {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      font-weight: 600;
+      height: 40px; /* Prevent layout shift */
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.2em;
+      background-color: var(--primary);
+      margin-left: 5px;
+      animation: blink 1s infinite;
+      vertical-align: middle;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* Skill Bars Styles */
+    .skill-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .skill-item {
+      margin-bottom: 25px;
+    }
+
+    .skill-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .skill-bar-bg {
+      width: 100%;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), #e6b765);
+      width: 0; /* Start at 0 for animation */
+      border-radius: 5px;
+      transition: width 1.5s cubic-bezier(0.2, 1, 0.2, 1);
+      box-shadow: 0 0 10px var(--primary-glow);
+    }
+
+    /* Floating Action Button (FAB) */
+    .fab-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      color: #000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      border: none;
+    }
+
+    .fab-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .fab-top:hover {
+      background: #fff;
+      transform: translateY(-5px);
+    }
+
+    /* Testimonials Styles */
+    .testimonial-card {
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 20px;
+      position: relative;
+      margin-bottom: 30px;
+    }
+    .testimonial-card p {
+      font-style: italic;
+      color: #ddd;
+      margin-bottom: 15px;
+    }
+    .testimonial-author {
+      font-weight: bold;
+      color: var(--primary);
+    }
+    .testimonial-role {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* Contact Modal Styles */
+    .modal {
+      display: none; 
+      position: fixed; 
+      z-index: 2000; 
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%; 
+      background-color: rgba(0,0,0,0.8); 
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-content {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      margin: 10% auto; 
+      padding: 40px;
+      border: 1px solid var(--primary-glow);
+      width: 90%;
+      max-width: 500px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(245, 199, 122, 0.2);
+      position: relative;
+      animation: slideIn 0.4s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .close-modal {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close-modal:hover {
+      color: var(--primary);
+    }
+
+    .modal input, .modal textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #334155;
+      background: #0f172a;
+      color: #fff;
+    }
+
+    .modal input:focus, .modal textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
   </style>
 </head>
 <body>
@@ -347,7 +592,7 @@
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+      <a href="#" id="openContactModal">Contact</a>
     </nav>
   </div>
 </header>
@@ -358,6 +603,10 @@
     <div class="hero-text">
       <h2>Hello, I’m</h2>
       <h1>Muhammad Huzaifa</h1>
+      <!-- Typewriter Effect Here -->
+      <div class="typewriter-container">
+        I build <span id="typewriter-text"></span><span class="cursor"></span>
+      </div>
       <p>
         Backend Developer specializing in AI-powered systems,
         scalable APIs, automation, and production-ready backends.
@@ -409,13 +658,83 @@
   </div>
 </section>
 
+<!-- ================= EDUCATION & CERTIFICATIONS ================= -->
+<section id="education" class="section">
+  <div class="container">
+    <h2 class="section-title">Education & Certifications</h2>
+    
+    <div class="edu-grid">
+      <!-- Education Column -->
+      <div class="edu-column">
+        <h3>Education</h3>
+        
+        <div class="edu-item">
+          <h4>Bachelor's in Computer Engineering</h4>
+          <p>National University of Technology, Islamabad</p>
+          <p style="font-size: 0.85rem; opacity: 0.7;">Oct 2022 – Present</p>
+        </div>
+
+        <div class="edu-item">
+          <h4>Intermediate in Computer Sciences</h4>
+          <p>Military College Jhelum</p>
+          <p style="font-size: 0.85rem; opacity: 0.7;">Jan 2017 – July 2022</p>
+        </div>
+      </div>
+
+      <!-- Certifications Column -->
+      <div class="edu-column">
+        <h3>Certifications</h3>
+        
+        <div class="edu-item">
+          <h4>Machine Learning with Python</h4>
+          <p>IBM (Coursera)</p>
+        </div>
+
+        <div class="edu-item">
+          <h4>Python Data Structures</h4>
+          <p>University of Michigan (Coursera)</p>
+        </div>
+
+        <div class="edu-item">
+          <h4>Robotics & Automation</h4>
+          <p>NAVTTC</p>
+        </div>
+
+        <div class="edu-item">
+          <h4>Blockchain Technology</h4>
+          <p>NAVTTC</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS (NEW) ================= -->
+<section id="testimonials" class="section">
+  <div class="container">
+    <h2 class="section-title">What Clients Say</h2>
+    <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+      <div class="testimonial-card">
+        <p>"Huzaifa built a robust scraping pipeline that saved us 20+ hours a week. His attention to detail and proactive communication were outstanding."</p>
+        <div class="testimonial-author">Sarah Jenkins</div>
+        <div class="testimonial-role">Marketing Director</div>
+      </div>
+      <div class="testimonial-card">
+        <p>"The AI integration for our content platform was seamless. Huzaifa delivered a scalable backend that handles high traffic effortlessly."</p>
+        <div class="testimonial-author">David Chen</div>
+        <div class="testimonial-role">CTO, TechFlow</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= METRICS ================= -->
 <section id="metrics" class="section">
   <div class="container">
     <h2 class="section-title">Impact & Metrics</h2>
 
-    <!-- Polished Metric Grid with Added Spacing -->
-    <div class="card-grid" style="margin-top: 80px;">
+    <!-- Polished Metric Grid - REMOVED GAP -->
+    <div class="card-grid">
       <div class="metric-card">
         <span class="metric-number">10k+</span>
         <p class="metric-label">Companies Processed</p>
@@ -441,8 +760,8 @@
   <div class="container">
     <h2 class="section-title">What I Do</h2>
 
-    <!-- Polished Service Grid with Added Spacing -->
-    <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-top: 80px;">
+    <!-- Polished Service Grid - REMOVED GAP -->
+    <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
       <div class="service-card">
         <div class="service-icon">⚙️</div>
         <div class="service-title">Backend Architecture</div>
@@ -467,38 +786,97 @@
   </div>
 </section>
 
-<!-- ================= TECH STACK ================= -->
+<!-- ================= TECH STACK & SKILLS ================= -->
 <section id="tech-stack" class="section">
   <div class="container">
-    <h2 class="section-title">Tech Stack</h2>
+    <h2 class="section-title">Tech Stack & Proficiency</h2>
 
-    <!-- Added margin-top to pull cards down -->
-    <div class="tech-stack-grid" style="margin-top: 100px;">
-      <!-- Polished Tech Cards with Labels -->
+    <!-- Removed margin-top - REMOVED GAP -->
+    <div class="tech-stack-grid">
+      <!-- Polished Tech Cards with Inline SVGs -->
+      
+      <!-- Card 1: Backend -->
       <div class="tech-card">
         <h4>Backend</h4>
         <div class="project-tech-icons">
-          <img src="assets/icons/python.svg" alt="Python" title="Python">
-          <img src="assets/icons/fast-api.svg" alt="FastAPI" title="FastAPI">
-          <img src="assets/icons/jwt.svg" alt="JWT" title="JWT">
+          <!-- Python SVG -->
+          <svg class="tech-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-8.36l.07-.28.22-.32.31-.28.38-.2.44-.1.45-.02.46.06zM6.3 8.7a.55.55 0 1 0 0-1.1.55.55 0 0 0 0 1.1zM22.4 9.42l.29.02.26.05.23.09.2.13.18.17.15.22.1.26.06.3.02.34v7.74l-.05 1.18-.13 1.05-.23.91-.32.75-.41.6-.48.45-.55.33-.6.22-.65.13-.68.05-1.52-.06-1.25-.2-1.01-.35-.78-.51-.57-.68-.38-.86-.2-.91-.09-.59-.03-.29v-5.26l.06-.7.15-.6.24-.51.31-.41.36-.33.39-.25.4-.17.39-.1.36-.05.31-.02.25.01h6.63V6.37H11.23l-.28-.06-.24-.1-.21-.13-.17-.17-.13-.21-.09-.25-.05-.28-.02-.31v-1.7l.02-.27.05-.25.09-.23.13-.2.17-.16.21-.12.24-.09.28-.05.31-.02h10.27zM18.86 16.43a.55.55 0 1 0 0-1.1.55.55 0 0 0 0 1.1z"/></svg>
+          
+          <!-- FastAPI SVG (Lightning/Flash Representation) -->
+          <svg class="tech-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          
+          <!-- JWT SVG (Shield/Token Representation) -->
+          <svg class="tech-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><text x="12" y="16" text-anchor="middle" font-size="8" fill="currentColor" stroke="none" font-weight="bold">JWT</text></svg>
         </div>
         <p class="tech-names">Python · FastAPI · JWT</p>
       </div>
 
+      <!-- Card 2: AI / APIs -->
       <div class="tech-card">
         <h4>AI / APIs</h4>
         <div class="project-tech-icons">
-          <img src="assets/icons/openapi.svg" alt="OpenAPI" title="OpenAPI">
+          <!-- OpenAPI (Connection/Network Node) -->
+          <svg class="tech-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          
+          <!-- LLMs (Brain/AI) -->
+          <svg class="tech-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7H6V8a6 6 0 0 1 6-6z"/><path d="M6 15v6"/><path d="M18 15v6"/><path d="M12 15v6"/></svg>
         </div>
         <p class="tech-names">OpenAPI · LLMs</p>
       </div>
 
+      <!-- Card 3: Database -->
       <div class="tech-card">
         <h4>Database</h4>
         <div class="project-tech-icons">
-          <img src="assets/icons/postgresql.svg" alt="PostgreSQL" title="PostgreSQL">
+          <!-- PostgreSQL (Database/Server) -->
+          <svg class="tech-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
         </div>
         <p class="tech-names">PostgreSQL</p>
+      </div>
+    </div>
+
+    <!-- NEW ANIMATED SKILL BARS SUB-SECTION -->
+    <div class="skill-container" style="margin-top: 50px;">
+      <h3 style="text-align: center; margin-bottom: 30px;">Technical Proficiency</h3>
+      
+      <div class="skill-item">
+        <div class="skill-info">
+          <span>Python & FastAPI</span>
+          <span>95%</span>
+        </div>
+        <div class="skill-bar-bg">
+          <div class="skill-bar-fill" data-width="95%"></div>
+        </div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-info">
+          <span>Web Scraping & Automation</span>
+          <span>95%</span>
+        </div>
+        <div class="skill-bar-bg">
+          <div class="skill-bar-fill" data-width="95%"></div>
+        </div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-info">
+          <span>AI & LLM Integration</span>
+          <span>85%</span>
+        </div>
+        <div class="skill-bar-bg">
+          <div class="skill-bar-fill" data-width="85%"></div>
+        </div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-info">
+          <span>Database Management (PostgreSQL)</span>
+          <span>80%</span>
+        </div>
+        <div class="skill-bar-bg">
+          <div class="skill-bar-fill" data-width="80%"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -518,11 +896,12 @@
         <p class="subtitle">AI-Driven Episodic Story Generation Platform</p>
 
         <div class="project-tech-icons">
-          <img src="assets/icons/python.svg">
-          <img src="assets/icons/fast-api.svg">
-          <img src="assets/icons/postgresql.svg">
-          <img src="assets/icons/openapi.svg">
-          <img src="assets/icons/jwt.svg">
+          <!-- Python SVG -->
+          <svg class="tech-icon-svg" style="width: 28px; height: 28px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-8.36l.07-.28.22-.32.31-.28.38-.2.44-.1.45-.02.46.06zM6.3 8.7a.55.55 0 1 0 0-1.1.55.55 0 0 0 0 1.1zM22.4 9.42l.29.02.26.05.23.09.2.13.18.17.15.22.1.26.06.3.02.34v7.74l-.05 1.18-.13 1.05-.23.91-.32.75-.41.6-.48.45-.55.33-.6.22-.65.13-.68.05-1.52-.06-1.25-.2-1.01-.35-.78-.51-.57-.68-.38-.86-.2-.91-.09-.59-.03-.29v-5.26l.06-.7.15-.6.24-.51.31-.41.36-.33.39-.25.4-.17.39-.1.36-.05.31-.02.25.01h6.63V6.37H11.23l-.28-.06-.24-.1-.21-.13-.17-.17-.13-.21-.09-.25-.05-.28-.02-.31v-1.7l.02-.27.05-.25.09-.23.13-.2.17-.16.21-.12.24-.09.28-.05.31-.02h10.27zM18.86 16.43a.55.55 0 1 0 0-1.1.55.55 0 0 0 0 1.1z"/></svg>
+          <!-- FastAPI SVG -->
+          <svg class="tech-icon-svg" style="width: 28px; height: 28px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <!-- JWT SVG -->
+          <svg class="tech-icon-svg" style="width: 28px; height: 28px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><text x="12" y="16" text-anchor="middle" font-size="8" fill="currentColor" stroke="none" font-weight="bold">JWT</text></svg>
         </div>
 
         <!-- Polished Button -->
@@ -532,22 +911,47 @@
 
     <!-- WEB SCRAPING -->
     <div class="project-cover-card">
-      <img src="assets/images/background.jpg" class="project-cover-img">
+      <img src="assets/images/webscrapper.jpg" class="project-cover-img" onerror="this.src='assets/images/background.jpg'">
 
       <div class="project-cover-overlay">
         <h3>Web Scraping & Outreach Automation</h3>
         <p class="subtitle">End-to-End Lead Intelligence Pipeline</p>
 
         <div class="project-tech-icons">
-          <img src="assets/icons/python.svg">
-          <img src="assets/icons/fast-api.svg">
-          <img src="assets/icons/jwt.svg">
+          <!-- Python SVG -->
+          <svg class="tech-icon-svg" style="width: 28px; height: 28px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-8.36l.07-.28.22-.32.31-.28.38-.2.44-.1.45-.02.46.06zM6.3 8.7a.55.55 0 1 0 0-1.1.55.55 0 0 0 0 1.1zM22.4 9.42l.29.02.26.05.23.09.2.13.18.17.15.22.1.26.06.3.02.34v7.74l-.05 1.18-.13 1.05-.23.91-.32.75-.41.6-.48.45-.55.33-.6.22-.65.13-.68.05-1.52-.06-1.25-.2-1.01-.35-.78-.51-.57-.68-.38-.86-.2-.91-.09-.59-.03-.29v-5.26l.06-.7.15-.6.24-.51.31-.41.36-.33.39-.25.4-.17.39-.1.36-.05.31-.02.25.01h6.63V6.37H11.23l-.28-.06-.24-.1-.21-.13-.17-.17-.13-.21-.09-.25-.05-.28-.02-.31v-1.7l.02-.27.05-.25.09-.23.13-.2.17-.16.21-.12.24-.09.28-.05.31-.02h10.27zM18.86 16.43a.55.55 0 1 0 0-1.1.55.55 0 0 0 0 1.1z"/></svg>
+          <!-- FastAPI SVG -->
+          <svg class="tech-icon-svg" style="width: 28px; height: 28px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <!-- JWT SVG -->
+          <svg class="tech-icon-svg" style="width: 28px; height: 28px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><text x="12" y="16" text-anchor="middle" font-size="8" fill="currentColor" stroke="none" font-weight="bold">JWT</text></svg>
         </div>
 
         <!-- Polished Button -->
         <a href="scraping-automation.html" class="btn-glow" style="margin-top: 15px;">View Details</a>
       </div>
     </div>
+
+    <!-- VIDEO AUTOMATION -->
+    <div class="project-cover-card">
+      <!-- Fallback image set to background.jpg if video-automation.jpg doesn't exist -->
+      <img src="assets/images/VideoGeneration.jpg" class="project-cover-img" onerror="this.src='assets/images/background.jpg'">
+
+      <div class="project-cover-overlay">
+        <h3>Automated Video Generation</h3>
+        <p class="subtitle">AI-Driven Content Creation & YouTube Growth</p>
+
+        <div class="project-tech-icons">
+          <!-- Python SVG -->
+          <svg class="tech-icon-svg" style="width: 28px; height: 28px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-8.36l.07-.28.22-.32.31-.28.38-.2.44-.1.45-.02.46.06zM6.3 8.7a.55.55 0 1 0 0-1.1.55.55 0 0 0 0 1.1zM22.4 9.42l.29.02.26.05.23.09.2.13.18.17.15.22.1.26.06.3.02.34v7.74l-.05 1.18-.13 1.05-.23.91-.32.75-.41.6-.48.45-.55.33-.6.22-.65.13-.68.05-1.52-.06-1.25-.2-1.01-.35-.78-.51-.57-.68-.38-.86-.2-.91-.09-.59-.03-.29v-5.26l.06-.7.15-.6.24-.51.31-.41.36-.33.39-.25.4-.17.39-.1.36-.05.31-.02.25.01h6.63V6.37H11.23l-.28-.06-.24-.1-.21-.13-.17-.17-.13-.21-.09-.25-.05-.28-.02-.31v-1.7l.02-.27.05-.25.09-.23.13-.2.17-.16.21-.12.24-.09.28-.05.31-.02h10.27zM18.86 16.43a.55.55 0 1 0 0-1.1.55.55 0 0 0 0 1.1z"/></svg>
+          <!-- Video Icon -->
+          <svg class="tech-icon-svg" style="width: 28px; height: 28px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        </div>
+
+        <!-- Polished Button -->
+        <a href="video-automation.html" class="btn-glow" style="margin-top: 15px;">View Details</a>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -588,10 +992,51 @@
   </div>
 </section>
 
+<!-- FAB Button -->
+<button id="scrollTopBtn" class="fab-top" title="Go to top">↑</button>
+
+<!-- Contact Modal Structure -->
+<div id="contactModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <h2 style="color:var(--primary); margin-bottom: 20px;">Contact Me</h2>
+    <form id="contactForm">
+      <input type="text" placeholder="Name" required>
+      <input type="email" placeholder="Email" required>
+      <textarea rows="4" placeholder="Message" required></textarea>
+      <button type="submit" class="btn-glow" style="width: 100%;">Send Message</button>
+    </form>
+  </div>
+</div>
+
 <footer class="footer footer-polished">
-  <p>© 2026 Muhammad Huzaifa</p>
+  <div class="container" style="text-align: center;">
+    <p style="color: var(--muted); margin-bottom: 10px;">Built with HTML, CSS, & Vanilla JS</p>
+    <p>© 2026 Muhammad Huzaifa</p>
+  </div>
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+  // Modal Logic inline for simplicity or can be moved to main.js
+  const modal = document.getElementById("contactModal");
+  const openBtn = document.getElementById("openContactModal");
+  const closeBtn = document.getElementsByClassName("close-modal")[0];
+
+  openBtn.onclick = function(e) {
+    e.preventDefault();
+    modal.style.display = "block";
+  }
+
+  closeBtn.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
 </body>
 </html>

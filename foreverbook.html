@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web Scraping & Outreach Automation | Automation Pipeline</title>
+  <title>ForeverBook | AI Story Platform</title>
 
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
+  <!-- Re-using responsive styles if needed for mobile layout -->
   <link rel="stylesheet" href="css/responsive.css">
   
   <style>
@@ -41,7 +42,7 @@
     }
 
     .project-header h1 {
-      font-size: 3rem;
+      font-size: 3.5rem;
       margin-bottom: 10px;
       line-height: 1.1;
     }
@@ -50,7 +51,7 @@
       font-size: 1.2rem;
       color: var(--primary);
       font-weight: 500;
-      max-width: 700px;
+      max-width: 600px;
     }
 
     .info-grid {
@@ -141,7 +142,7 @@
 
     @media (max-width: 768px) {
       .project-header { height: 50vh; }
-      .project-header h1 { font-size: 2.2rem; }
+      .project-header h1 { font-size: 2.5rem; }
       .info-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -164,11 +165,10 @@
     
     <!-- ================= PROJECT HERO BANNER ================= -->
     <div class="project-header">
-      <!-- Using the background image associated with this project -->
-      <img src="assets/images/background.jpg" alt="Automation Pipeline Visualization">
+      <img src="assets/images/foreverbook-cover.jpg" alt="ForeverBook Interface Art">
       <div class="project-header-overlay">
-        <h1>Web Scraping, Filtering & Outreach Automation</h1>
-        <p class="subtitle">End-to-End Lead Intelligence Pipeline</p>
+        <h1>ForeverBook</h1>
+        <p class="subtitle">AI-Driven Episodic Story Generation Platform</p>
       </div>
     </div>
 
@@ -182,11 +182,15 @@
         <div class="card" style="margin-bottom: 30px;">
           <h2 class="section-title" style="margin-top: 0;">Project Overview</h2>
           <p>
-            This project is an <strong>end-to-end data automation pipeline</strong> built to identify, evaluate, and outreach to relevant companies at scale.
+            ForeverBook is a <strong>backend-first AI storytelling platform</strong> that automatically generates 
+            full fantasy books, structured into chapters and episodes, while maintaining narrative continuity 
+            across generations.
           </p>
           <br>
           <p>
-            It automates the entire workflow — from raw company data ingestion to intelligent filtering and controlled email outreach — while remaining <strong>resume-safe, fault-tolerant, and production-ready</strong>.
+            The system goes beyond simple text generation by introducing story planning, episodic arcs, 
+            chapter summaries, and AI-generated book and chapter titles. It is a complete storytelling engine 
+            designed for scalability and structure.
           </p>
         </div>
 
@@ -195,28 +199,15 @@
           <h2 class="section-title" style="margin-top: 0;">The Problem & Solution</h2>
           <p style="color: var(--muted); margin-bottom: 10px;">THE CHALLENGE</p>
           <p style="margin-bottom: 20px;">
-            Manually finding websites, checking relevance, shortlisting leads, and sending emails is slow, error-prone, and does not scale.
+            Manually writing long-form fantasy stories breaks continuity, doesn’t scale, and is hard to structure 
+            into cohesive chapters. Most AI tools just generate disconnected streams of text.
           </p>
           
           <p style="color: var(--primary); margin-bottom: 10px;">THE SOLUTION</p>
           <ul class="principles-list" style="list-style-type: none;">
-            <li>✨ <strong>Scalable Automation:</strong> Replaces manual work with a pipeline capable of processing thousands of companies.</li>
-            <li>✨ <strong>Real-World Resilience:</strong> Handles rate limits, interruptions, and unreliable websites gracefully.</li>
-            <li>✨ <strong>Intelligent Decisions:</strong> Uses keyword scoring to separate "Best Matches" from noise.</li>
-          </ul>
-        </div>
-
-        <!-- Why This Stands Out Card -->
-        <div class="card">
-          <h2 class="section-title" style="margin-top: 0;">Why This Stands Out</h2>
-          <p style="margin-bottom: 15px;">
-            This is not a demo scraper. It reflects <strong>real-world automation challenges</strong>, data integrity concerns, and safe outreach practices.
-          </p>
-          <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 10px;">WHAT IT SHOWS ABOUT ME:</p>
-          <ul class="principles-list" style="list-style: none; padding-left: 0;">
-            <li style="margin-bottom: 8px;">🔹 Strong backend fundamentals & system design</li>
-            <li style="margin-bottom: 8px;">🔹 Experience with automation under real constraints</li>
-            <li style="margin-bottom: 8px;">🔹 Clean, maintainable, production-oriented code</li>
+            <li>✨ <strong>Pre-Planning:</strong> Structures the story arc before writing a single word.</li>
+            <li>✨ <strong>Strict Boundaries:</strong> Enforces episode and chapter limits.</li>
+            <li>✨ <strong>Memory:</strong> Uses previous chapter summaries to guide future generation.</li>
           </ul>
         </div>
 
@@ -229,34 +220,24 @@
           
           <div style="display: flex; flex-direction: column; gap: 15px;">
             <div style="display: flex; align-items: center; gap: 12px;">
-              <img src="assets/icons/python.svg" width="24"> <span>Python</span>
+              <img src="assets/icons/python.svg" width="24"> <span>Python & FastAPI</span>
             </div>
             <div style="display: flex; align-items: center; gap: 12px;">
-              <span style="font-size: 1.2rem;">🕸️</span> <span>Selenium WebDriver</span>
+              <img src="assets/icons/openapi.svg" width="24"> <span>OpenAI GPT-4</span>
             </div>
             <div style="display: flex; align-items: center; gap: 12px;">
-              <span style="font-size: 1.2rem;">🐼</span> <span>Pandas</span>
+              <img src="assets/icons/postgresql.svg" width="24"> <span>PostgreSQL</span>
             </div>
             <div style="display: flex; align-items: center; gap: 12px;">
-              <img src="assets/icons/fast-api.svg" width="24"> <span>FastAPI</span>
+              <img src="assets/icons/fast-api.svg" width="24"> <span>Background Tasks</span>
             </div>
             <div style="display: flex; align-items: center; gap: 12px;">
-              <span style="font-size: 1.2rem;">📧</span> <span>SMTP (Gmail)</span>
+              <img src="assets/icons/jwt.svg" width="24"> <span>JWT Auth</span>
             </div>
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <span style="font-size: 1.2rem;">📊</span> <span>Regex NLP</span>
-            </div>
-          </div>
-
-          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-            <h4 style="font-size: 0.9rem; color: var(--muted); margin-bottom: 10px;">RESUME SUMMARY</h4>
-            <p style="font-size: 0.85rem; line-height: 1.5;">
-              Built a full automation pipeline using Python and Selenium to scrape, score, and outreach to companies at scale, featuring resume-safe execution and keyword filtering.
-            </p>
           </div>
 
           <!-- Polished Glow Button -->
-          <a href="https://github.com/YOUR_GITHUB" target="_blank" class="btn-glow sidebar-btn">
+          <a href="https://github.com/YOUR_GITHUB/foreverbook" target="_blank" class="btn-glow sidebar-btn">
             View on GitHub <span style="font-size: 1.2em">↗</span>
           </a>
         </div>
@@ -266,38 +247,38 @@
   </div>
 </section>
 
-<!-- ================= SYSTEM ARCHITECTURE ================= -->
+<!-- ================= SYSTEM ARCHITECTURE (Full Width) ================= -->
 <section class="section">
   <div class="container">
-    <h2 class="section-title">How the System Works</h2>
+    <h2 class="section-title">System Architecture</h2>
     <p style="margin-bottom: 30px; max-width: 700px;">
-      The pipeline moves data through five distinct stages, ensuring only high-quality leads receive outreach.
+      The system uses a sophisticated 5-step pipeline to ensure quality and continuity, processing requests asynchronously to handle long-running AI generation tasks.
     </p>
 
     <div class="card-grid">
       <div class="card">
-        <h3>1. Data Ingestion</h3>
-        <p style="color: var(--muted);">Starts with a raw CSV of company records (e.g., Companies House data).</p>
+        <h3>1. User Input</h3>
+        <p style="color: var(--muted);">User creates a Story Plan. The system initializes the world and setting.</p>
       </div>
 
       <div class="card">
-        <h3>2. Scraping Engine</h3>
-        <p style="color: var(--muted);">Selenium searches for websites, extracts emails, and mimics human behavior.</p>
+        <h3>2. Structural Generation</h3>
+        <p style="color: var(--muted);">System generates a Story Arc and a 24-episode chapter plan.</p>
       </div>
 
       <div class="card">
-        <h3>3. Filtering & Scoring</h3>
-        <p style="color: var(--muted);">Regex-based scoring classifies companies as Best Match, Potential, or Discard.</p>
+        <h3>3. AI Intelligence</h3>
+        <p style="color: var(--muted);">AI generates the Book Title and unique Chapter Titles based on context.</p>
       </div>
 
       <div class="card">
-        <h3>4. Email Outreach</h3>
-        <p style="color: var(--muted);">SMTP system validates emails and sends campaigns with limits and delays.</p>
+        <h3>4. Async Processing</h3>
+        <p style="color: var(--muted);">Episodes are generated asynchronously in the background (non-blocking).</p>
       </div>
       
       <div class="card">
-        <h3>5. API Layer</h3>
-        <p style="color: var(--muted);">FastAPI backend for uploading CSVs and triggering background jobs.</p>
+        <h3>5. Continuity Engine</h3>
+        <p style="color: var(--muted);">Summaries are stored in DB and fed into the next chapter's prompt.</p>
       </div>
     </div>
   </div>
@@ -307,19 +288,19 @@
 <section class="section">
   <div class="container">
     <div class="card">
-      <h2 class="section-title" style="margin-top: 0;">Key Technical Features</h2>
+      <h2 class="section-title" style="margin-top: 0;">Key Features</h2>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
         <ul class="principles-list">
-          <li>✅ <strong>Resume-Safe:</strong> Ctrl+C safe execution with automatic progress backups.</li>
-          <li>✅ <strong>Fault-Tolerant:</strong> Handles missing sites, invalid URLs, and network failures.</li>
-          <li>✅ <strong>Decision Engine:</strong> Keyword-driven scoring to prioritize relevant leads.</li>
-          <li>✅ <strong>Human-Like:</strong> Implements random delays to avoid bot detection.</li>
+          <li>✅ <strong>Contextual AI Titles:</strong> AI-generated book and chapter titles using contextual prompts.</li>
+          <li>✅ <strong>Dynamic Summaries:</strong> Chapter titles dynamically generated using previous chapter summaries.</li>
+          <li>✅ <strong>Structured Planning:</strong> Automatic 24-episode chapter planning.</li>
+          <li>✅ <strong>Async Execution:</strong> Background task–based episode generation (non-blocking).</li>
         </ul>
         <ul class="principles-list">
-          <li>✅ <strong>Transparent:</strong> CSV-first architecture for easy data auditability.</li>
-          <li>✅ <strong>Modular:</strong> Clean separation between scraper, filter, and outreach modules.</li>
-          <li>✅ <strong>Production-Aware:</strong> Enforces rate limits, logging, and input validation.</li>
-          <li>✅ <strong>API-Driven:</strong> Optional FastAPI layer for external integration.</li>
+          <li>✅ <strong>Story Continuity:</strong> Persistent story continuity using database-stored summaries.</li>
+          <li>✅ <strong>Fault Tolerance:</strong> Safe fallback mechanisms for AI failures.</li>
+          <li>✅ <strong>Secure Access:</strong> Token-controlled access to story generation.</li>
+          <li>✅ <strong>Modern Architecture:</strong> REST-based FastAPI architecture with PostgreSQL.</li>
         </ul>
       </div>
     </div>
@@ -331,7 +312,7 @@
         <h2 class="section-title">Ready to see code?</h2>
         <div class="cta-buttons" style="justify-content: center;">
             <!-- Polished Glow Button -->
-            <a href="https://github.com/YOUR_GITHUB" target="_blank" class="btn-glow">
+            <a href="https://github.com/YOUR_GITHUB/foreverbook" target="_blank" class="btn-glow">
               View GitHub Repository <span style="font-size: 1.2em">→</span>
             </a>
         </div>
