@@ -211,7 +211,7 @@ if (canvas) {
   animateParticles();
 }
 
-// 7. Scroll Progress Bar (NEW)
+// 7. Scroll Progress Bar (Existing)
 window.addEventListener('scroll', () => {
   const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
   const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -223,7 +223,7 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// 8. Active Nav Link Highlighter (NEW)
+// 8. Active Nav Link Highlighter (Existing)
 const navSections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-link');
 
@@ -244,3 +244,25 @@ const navObserver = new IntersectionObserver((entries) => {
 navSections.forEach(section => {
   navObserver.observe(section);
 });
+
+// 9. Custom Cursor Logic (NEW)
+const cursorDot = document.querySelector(".cursor-dot");
+const cursorOutline = document.querySelector(".cursor-outline");
+
+if (cursorDot && cursorOutline) {
+  window.addEventListener("mousemove", (e) => {
+    const posX = e.clientX;
+    const posY = e.clientY;
+
+    // Dot follows cursor exactly
+    cursorDot.style.left = `${posX}px`;
+    cursorDot.style.top = `${posY}px`;
+
+    // Outline follows with delay (animation in CSS keyframes isn't needed, just direct update with lag via animate)
+    // Simple direct update for responsiveness
+    cursorOutline.animate({
+      left: `${posX}px`,
+      top: `${posY}px`
+    }, { duration: 500, fill: "forwards" });
+  });
+}
