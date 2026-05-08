@@ -1,160 +1,355 @@
-/* LOGO */
+/* ========================================
+   LOGO
+======================================== */
+
 .logo {
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   font-weight: 700;
+  letter-spacing: 1px;
 }
 
-/* HERO TEXT */
+/* ========================================
+   HERO SECTION
+======================================== */
+
 .hero-text h2 {
   font-size: 1.3rem;
   color: var(--muted);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  font-weight: 500;
 }
 
 .hero-text h1 {
-  font-size: 3.4rem;       /* ⬅ BIGGER */
-  line-height: 1.1;
-  margin-bottom: 16px;
+  font-size: 4rem;
+  line-height: 1.05;
+  margin-bottom: 20px;
+  font-weight: 800;
 }
 
 .hero-text p {
   font-size: 1.15rem;
-  max-width: 560px;
+  max-width: 580px;
+  line-height: 1.8;
+  color: var(--muted);
 }
 
 /* HERO IMAGE */
+
 .hero-image img {
   width: 100%;
-  max-width: 460px;        /* ⬅ BIG FIX */
-  border-radius: 18px;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.65);
+  max-width: 480px;
+  border-radius: 22px;
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.65),
+    0 0 40px rgba(255, 200, 87, 0.08);
+
+  transition: 0.4s ease;
 }
 
-/* BUTTON */
+.hero-image img:hover {
+  transform: translateY(-6px) scale(1.01);
+}
+
+/* ========================================
+   BUTTONS
+======================================== */
+
 .btn-primary {
   background: var(--primary);
   color: #000;
-  padding: 14px 28px;
+
+  padding: 14px 30px;
   border-radius: 14px;
-  font-weight: 600;
+
+  font-weight: 700;
   display: inline-block;
-  margin-top: 24px;
-  transition: 0.3s ease;
+  margin-top: 26px;
+
+  transition: 0.35s ease;
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 22px var(--primary-glow);
+  transform: translateY(-3px);
+  box-shadow: 0 0 28px var(--primary-glow);
 }
 
-/* CARD GRID */
+/* ========================================
+   SECTION TITLES
+======================================== */
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 28px;
+  font-weight: 800;
+}
+
+/* ========================================
+   CARD GRID
+======================================== */
+
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 28px;
 }
 
+/* ========================================
+   CARDS
+======================================== */
+
 .card {
-  background: rgba(15, 23, 42, 0.72);
-  backdrop-filter: blur(14px);
-  border-radius: 16px;
-  padding: 30px;
+  background: rgba(15, 23, 42, 0.68);
+
+  backdrop-filter: blur(16px);
+
+  border-radius: 18px;
+  padding: 32px;
+
+  border: 1px solid rgba(255,255,255,0.05);
+
+  transition: 0.35s ease;
 }
 
-/* =========================
+.card:hover {
+  transform: translateY(-6px);
+
+  border-color: rgba(255, 200, 87, 0.25);
+
+  box-shadow:
+    0 0 25px rgba(255, 200, 87, 0.08);
+}
+
+/* ========================================
    PROJECT COVER CARD
-========================= */
+======================================== */
 
 .project-cover-card {
   position: relative;
   width: 100%;
-  border-radius: 20px;
+
+  border-radius: 24px;
   overflow: hidden;
-  margin-top: 50px;
-  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.65);
-  transition: transform 0.4s ease;
+
+  margin-top: 60px;
+
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.65);
+
+  transition: 0.45s ease;
 }
 
 .project-cover-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
 }
+
+/* PROJECT IMAGE */
 
 .project-cover-img {
   width: 100%;
-  height: 440px;          /* ⬅ FIXED SIZE */
+  height: 460px;
+
   object-fit: cover;
   display: block;
+
+  transition: transform 0.5s ease;
 }
+
+.project-cover-card:hover .project-cover-img {
+  transform: scale(1.03);
+}
+
+/* PROJECT OVERLAY */
 
 .project-cover-overlay {
   position: absolute;
   inset: 0;
+
   background: linear-gradient(
     to top,
     rgba(11, 18, 32, 0.96),
     rgba(11, 18, 32, 0.6),
-    rgba(11, 18, 32, 0.15)
+    rgba(11, 18, 32, 0.18)
   );
 
-  padding: 40px;
+  padding: 48px;
+
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
 
+/* PROJECT TEXT */
+
 .project-cover-overlay h3 {
-  font-size: 2.4rem;
-  margin-bottom: 10px;
+  font-size: 2.7rem;
+  margin-bottom: 12px;
+  font-weight: 800;
 }
 
 .project-cover-overlay .subtitle {
   color: var(--muted);
-  margin-bottom: 12px;
+  margin-bottom: 18px;
+
+  font-size: 1.05rem;
+  line-height: 1.7;
 }
 
 .project-cover-overlay .stack {
-  font-size: 0.9rem;
-  opacity: 0.85;
+  font-size: 0.95rem;
+  opacity: 0.9;
+
   margin-bottom: 18px;
 }
 
-/* TECH ICONS */
+/* ========================================
+   TECH ICONS
+======================================== */
+
 .project-tech-icons {
   display: flex;
-  gap: 14px;
-  margin-bottom: 18px;
+  gap: 16px;
+
+  margin-bottom: 22px;
+  align-items: center;
 }
 
 .project-tech-icons img {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
+
   filter: brightness(0) invert(1);
-  opacity: 0.9;
-  transition: transform 0.3s ease;
+
+  opacity: 0.92;
+
+  transition: 0.35s ease;
 }
 
 .project-tech-icons img:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px) scale(1.08);
+
+  filter:
+    brightness(0)
+    invert(1)
+    drop-shadow(0 0 8px rgba(255, 200, 87, 0.55));
 }
+
+/* ========================================
+   ENGINEERING PRINCIPLES
+======================================== */
+
 .principles-list {
   list-style: none;
-  margin-top: 20px;
+  margin-top: 24px;
 }
 
 .principles-list li {
-  margin-bottom: 10px;
-  font-size: 1.05rem;
+  margin-bottom: 14px;
+  font-size: 1.08rem;
+  line-height: 1.7;
 }
+
+/* ========================================
+   TECH STACK GRID
+======================================== */
 
 .tech-stack-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
+  gap: 28px;
 }
+
+/* ========================================
+   CTA BUTTONS
+======================================== */
 
 .cta-buttons {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
-  margin-top: 20px;
+
+  margin-top: 24px;
+}
+
+/* ========================================
+   METRICS SECTION
+======================================== */
+
+.metrics-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 60px;
+}
+
+.metrics-tag {
+  color: var(--primary);
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+}
+
+.metrics-description {
+  color: var(--muted);
+  line-height: 1.8;
+  margin-top: 18px;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+  gap: 30px;
+}
+
+/* METRIC CARD */
+
+.metric-card {
+  background: rgba(15, 23, 42, 0.68);
+
+  border: 1px solid rgba(255,255,255,0.05);
+
+  backdrop-filter: blur(16px);
+
+  border-radius: 22px;
+
+  padding: 42px 30px;
+
+  transition: 0.4s ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-8px);
+
+  border-color: rgba(255, 200, 87, 0.35);
+
+  box-shadow:
+    0 0 35px rgba(255, 200, 87, 0.12);
+}
+
+.metric-card h3 {
+  font-size: 3.2rem;
+  color: var(--primary);
+
+  margin-bottom: 14px;
+  font-weight: 800;
+}
+
+.metric-card p {
+  font-size: 1.2rem;
+  font-weight: 700;
+
+  margin-bottom: 10px;
+}
+
+.metric-card span {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.featured-metric {
+  border: 1px solid rgba(255, 200, 87, 0.4);
+
+  box-shadow:
+    0 0 40px rgba(255, 200, 87, 0.12);
 }
